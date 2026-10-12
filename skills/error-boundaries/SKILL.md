@@ -1,22 +1,25 @@
 ---
 name: error-boundaries
-description: "Define clear error handling and failure modes. Use for any code that can fail."
-type: workflow
-lifecycle: active
+description: "Design failure handling for operations involving retries, external services, persistence, or user-visible recovery."
 ---
 
-# Error Boundaries — Fail Explicitly
-
-Silent failures are bugs. Define how every failure surfaces.
+# Error Boundaries
+Make failures distinguishable and recovery intentional.
 
 ## Process
-1. List the failure modes for the change.
-2. Decide which are user-facing, which are logged, and which are retried.
-3. Use typed errors or clear error codes.
-4. Never swallow exceptions without a reason.
-5. Add tests for the failure paths.
+1. Enumerate expected failure categories and their effect on state.
+2. Map each to user behavior, typed error/code, logging, and retry policy.
+3. Retry transient failures only with a bound, timeout, backoff, and idempotency where side effects exist.
+4. Preserve original causes internally while excluding secrets and internals from public errors.
+5. Test failure paths, cancellation, and partial success where applicable.
 
-## Verification
-- [ ] Failure modes listed
-- [ ] User-facing errors are clear
-- [ ] Tests cover the error paths
+## Example
+A payment timeout may mean "outcome unknown." Query by idempotency key before retrying rather than risking another charge.
+
+## Stop conditions
+Do not silently swallow failures, retry indefinitely, or report success after an incomplete operation.
+
+## Evidence
+- [ ] Failure categories and state effects are explicit.
+- [ ] Retry bounds and duplicate-effect prevention are tested.
+- [ ] Users have an actionable recovery path.

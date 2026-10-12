@@ -1,63 +1,39 @@
-<div align="center">
-
 # Expert Engineering Skills
 
-**32 expert-level engineering skills for Claude Code and other AI coding agents**
+**32 engineering skills** for Claude Code, Codex, and agents that support SKILL.md.
 
-Tighter gates · Stronger verification · Higher signal than other collections
+Version: **0.1.0** · [Release notes](CHANGELOG.md) · [MIT License](LICENSE)
 
-[![Skills](https://img.shields.io/badge/Skills-32-brightgreen?style=for-the-badge&logo=claude&logoColor=white)](https://github.com/sujith011/expert-engineering-skills)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-D97757?style=for-the-badge&logo=claude&logoColor=white)](https://claude.ai/code)
-[![Stars](https://img.shields.io/github/stars/sujith011/expert-engineering-skills?style=for-the-badge&color=yellow)](https://github.com/sujith011/expert-engineering-skills/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/sujith011/expert-engineering-skills?style=for-the-badge)](https://github.com/sujith011/expert-engineering-skills/commits)
+Practical workflows for defining, building, reviewing, and releasing software. Each skill includes decision criteria, a concrete example, stop conditions, and evidence to collect.
 
-</div>
+## What this collection provides
 
----
+- Test-first behavior changes with the same sequence across testing and vertical slices.
+- Scope and verification scaled to actual risk.
+- Existing user authorization carried forward without repeated routine approval stops.
+- Specific checks for tenant authorization, retry side effects, migration recovery, accessibility, and runtime behavior.
+- Self-contained skills that can be installed individually.
 
-## Lifecycle
+Skills guide an agent; Markdown does not enforce a runtime gate. The included CI validates repository structure and helper behavior. It does not prove agents follow every instruction or that this collection outperforms another one. Behavioral evaluation cases are provided, but no comparative results have been published.
 
-<div align="center">
+## Start small
 
-[![Define](https://img.shields.io/badge/1._DEFINE-intent_%26_spec-blue?style=for-the-badge)](#define)
-→
-[![Plan](https://img.shields.io/badge/2._PLAN-atomic_tasks-green?style=for-the-badge)](#plan)
-→
-[![Build](https://img.shields.io/badge/3._BUILD-vertical_slices-orange?style=for-the-badge)](#build)
-→
-[![Verify](https://img.shields.io/badge/4._VERIFY-tests_%26_proof-purple?style=for-the-badge)](#verify)
-→
-[![Review](https://img.shields.io/badge/5._REVIEW-five_axis_gate-red?style=for-the-badge)](#review)
-→
-[![Ship](https://img.shields.io/badge/6._SHIP-pre_ship_gate-brightgreen?style=for-the-badge)](#ship)
+Start with understand-first, proof-first-testing, root-cause-debug, five-axis-gate, real-browser-check, and threat-surface. They apply only when relevant. Add planning, capacity, migration, and release workflows when the task calls for them; every task does not need the entire lifecycle.
 
-</div>
-
----
-
-## Why these are different
-
-| Other collections | This collection |
-|-------------------|-----------------|
-| Often skip or soften gates | Hard gates with explicit verification |
-| Generic advice | Opinionated process + anti-rationalization tables |
-| Tests as optional | Proof-first testing with seam rules and anti-patterns |
-| Review as optional polish | Five-axis gate with evidence required |
-| Large, process-owning frameworks | Lean, composable skills you can use individually |
-
-Inspired by the best practices in the ecosystem (including Matt Pocock’s skills), but tightened further: every skill has numbered steps, explicit rejection criteria, and a verification checklist that must pass before the work is considered done.
-
----
+Examples:
+- Label correction: focused edit and visual check.
+- Cross-tenant data leak: inspect ownership boundaries, add a failing abuse test, fix, and verify denial.
+- Destructive migration: compatibility, data integrity, rehearsed recovery, and target authorization.
+- Read-only review: inspect and report; do not edit, commit, or publish.
 
 ## Skills
 
 ### Define
 | Skill | Purpose |
 |-------|---------|
-| [`intent-extraction`](skills/intent-extraction/SKILL.md) | Extract true intent one question at a time until ~95% confidence |
+| [`intent-extraction`](skills/intent-extraction/SKILL.md) | Extract true intent one question at a time when material decisions are unresolved |
 | [`concept-sharpening`](skills/concept-sharpening/SKILL.md) | Turn a vague idea into concrete, evaluable proposals |
-| [`prd-first`](skills/prd-first/SKILL.md) | Write a complete, testable PRD before any code |
+| [`prd-first`](skills/prd-first/SKILL.md) | Define testable scope, scaled to the change |
 | [`quality-bar`](skills/quality-bar/SKILL.md) | Decide the quality bar once and enforce it everywhere |
 | [`docs-before-code`](skills/docs-before-code/SKILL.md) | Write the user-facing documentation before or alongside the implementation |
 
@@ -86,7 +62,7 @@ Inspired by the best practices in the ecosystem (including Matt Pocock’s skill
 | [`root-cause-debug`](skills/root-cause-debug/SKILL.md) | Reproduce → localize → reduce → fix → guard |
 | [`real-browser-check`](skills/real-browser-check/SKILL.md) | Verify UI behavior in a real browser |
 | [`measure-first`](skills/measure-first/SKILL.md) | Measure before you optimize |
-| [`load-proof`](skills/load-proof/SKILL.md) | Prove performance under load before declaring ready |
+| [`load-proof`](skills/load-proof/SKILL.md) | Measure capacity and concurrency when risk warrants it |
 | [`a11y-gate`](skills/a11y-gate/SKILL.md) | Verify accessibility before merge |
 | [`dep-audit`](skills/dep-audit/SKILL.md) | Audit dependencies for known vulnerabilities and necessity |
 
@@ -106,45 +82,57 @@ Inspired by the best practices in the ecosystem (including Matt Pocock’s skill
 | [`observe-first`](skills/observe-first/SKILL.md) | Add logging, metrics, and tracing before the feature is done |
 | [`migration-gate`](skills/migration-gate/SKILL.md) | Plan and gate any data or schema migration |
 | [`incident-playbook`](skills/incident-playbook/SKILL.md) | Write the incident response steps before the feature ships |
-| [`skill-router`](skills/skill-router/SKILL.md) | Route work to the correct skill and enforce shared rules |
+| [`skill-router`](skills/skill-router/SKILL.md) | Select the smallest relevant workflow |
 
 ---
 
-## Quick Start
 
-**Claude Code**
-```bash
+## Install
+
+Requires Git and Python 3.10 or newer. On Windows, use PowerShell; on macOS/Linux, use your shell. Replace python with python3 or py -3 if that is your installed launcher.
+
+Clone once:
+
+```sh
 git clone https://github.com/sujith011/expert-engineering-skills.git
-# Copy or symlink skills/ into your Claude Code skills directory
+cd expert-engineering-skills
 ```
 
-**Any agent that supports SKILL.md**
-```bash
-git clone https://github.com/sujith011/expert-engineering-skills.git
-# Reference individual skills/NAME/SKILL.md files
+The installer prints a dry run by default. Inspect the destinations, then repeat with --apply. It refuses differing existing content and skips identical installs; it never overwrites another skill.
+
+### Claude Code
+
+```sh
+python scripts/install_skills.py --agent claude
+python scripts/install_skills.py --agent claude --apply
 ```
 
-Each skill is self-contained and activates when its description matches the request.
+### Codex
 
----
+```sh
+python scripts/install_skills.py --agent codex
+python scripts/install_skills.py --agent codex --apply
+```
 
-## Design Principles
+These install six core workflows at the user scope. See [installation details](docs/INSTALLATION.md) for project scope, selected skills, all 32 skills, collisions, and platform paths.
 
-| Principle | Rule |
-|-----------|------|
-| **Spec before code** | No implementation until the PRD is approved |
-| **Tests are proof** | Failing test first. No production code without it |
-| **One slice at a time** | Finish a vertical slice completely before starting the next |
-| **Measure before optimize** | Baseline first. Change only what the data shows |
-| **Verify before ship** | Checklist gate. No silent exceptions |
-| **Clarity over cleverness** | Simpler code that a new engineer can understand faster |
+Use /root-cause-debug in Claude Code or $root-cause-debug in Codex to invoke a skill explicitly. Automatic selection depends on the agent and its configuration; inspect the session to confirm which skill loaded.
 
----
+## Validate and evaluate
 
-<div align="center">
+Run from the repository root:
 
-**Built for engineers who want agents that follow senior practices.**
+```sh
+python scripts/validate.py
+python -m unittest discover -s tests -v
+```
 
-[Star this repo](https://github.com/sujith011/expert-engineering-skills) · [Open an issue](https://github.com/sujith011/expert-engineering-skills/issues) · [MIT License](LICENSE)
+The validator checks the supported portable frontmatter, directory/name consistency, catalog count, release version, evaluation schema, and local inline Markdown links/heading anchors. It does not fetch external URLs or validate arbitrary YAML/Markdown syntax. GitHub Actions runs the validator and tests on Ubuntu and Windows with Python 3.10 and 3.13.
 
-</div>
+For live agent behavior, use the [evaluation protocol](evals/README.md) and isolated [fixtures](evals/fixtures/README.md). Record actual outcomes rather than assuming a green structural check establishes instruction-following.
+
+## Contribute
+
+Keep descriptions narrow, instructions scoped, and verification claims honest. Follow the [contribution guide](CONTRIBUTING.md). If adapting a published workflow, preserve its required attribution and license.
+
+Official format and discovery references: [Claude Code skills](https://code.claude.com/docs/en/skills), [Codex skills](https://learn.chatgpt.com/docs/build-skills), and [Agent Skills specification](https://agentskills.io/specification).

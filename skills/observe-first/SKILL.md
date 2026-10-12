@@ -1,22 +1,26 @@
 ---
 name: observe-first
-description: "Add logging, metrics, and tracing before the feature is considered done. Use for any user-facing or long-running change."
-type: workflow
-lifecycle: active
+description: "Add diagnostic signals for a changed production path when failures, latency, or background work need operational visibility."
 ---
 
-# Observability First — See It in Production
-
-Do not ship a change you cannot observe.
+# Observe First
+Choose signals that support a concrete decision without leaking data.
 
 ## Process
-1. Identify the key signals (errors, latency, success rate).
-2. Add structured logs at decision points.
-3. Emit metrics for the critical path.
-4. Confirm traces or correlation IDs exist.
-5. Document what to watch after deploy.
+1. Identify success, failure, latency, and saturation signals for the changed path.
+2. Reuse existing structured logging, metrics, and correlation/tracing conventions.
+3. Include useful context while redacting secrets and sensitive payloads.
+4. Bound label cardinality; do not use user IDs or raw URLs as unrestricted metric labels.
+5. Verify a success and failure can be traced across the relevant boundary.
+6. Document the dashboard/query and actionable alert threshold or explain why no new alert is needed.
 
-## Verification
-- [ ] Logs present at key points
-- [ ] Metrics defined
-- [ ] What to alert on is written down
+## Example
+For queued work, measure queue age and failed jobs and preserve a correlation ID; logging only "job started" cannot establish completion.
+
+## Stop conditions
+Do not instrument every routine UI change with a new metrics stack or log tokens, passwords, or personal data for convenience.
+
+## Evidence
+- [ ] Signals correspond to operational decisions.
+- [ ] Success/failure visibility is checked.
+- [ ] Redaction and label cardinality are considered.

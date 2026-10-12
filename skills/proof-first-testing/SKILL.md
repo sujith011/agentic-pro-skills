@@ -1,39 +1,32 @@
 ---
 name: proof-first-testing
-description: "Red-Green-Refactor with strict seams and anti-patterns. Tests are proof. Use when implementing logic, fixing bugs, or changing behavior."
-type: workflow
-lifecycle: active
+description: "Use a failing behavior test before implementing logic, fixing a bug, or changing observable behavior."
 ---
 
-# Proof-First Testing — Tests Are the Specification
-
-Write the failing test first. No production code without a failing test that describes the desired behavior.
+# Proof-First Testing
+A passing test is evidence for the behavior it exercises, not proof of all correctness.
 
 ## Process
-1. Agree the public seam(s) under test with the user (or from the spec).
-2. Write one failing test at that seam that names the behavior.
-3. Run it and confirm it fails for the right reason.
-4. Write the minimal code to make it pass.
-5. Commit the cycle. Repeat for the next behavior.
+1. Derive an observable behavior from the request or spec and choose the public seam.
+2. Write one test with an independent expected outcome.
+3. Run it before implementation; confirm it fails because the behavior is missing or wrong, not because setup is broken.
+4. Implement the smallest fix, run the test, then relevant regression checks.
+5. Refactor after green and rerun checks. Commit a coherent change only when authorized.
 
-## Rules of the Loop
-- **Red before green.** The test must fail first.
-- **One seam, one test, one implementation** per cycle.
-- **Test at the public interface only.** Never test private methods or internals.
-- **Do not weaken a test** to make code pass.
-- **Refactoring is separate.** Do it after the tests are green, or in a later review.
+## Test design
+- Cover relevant boundaries, failure paths, and concurrency, not private method names.
+- Mock external dependencies when necessary; record which integration claims the mock cannot establish.
+- Avoid assertions that recompute the answer using the implementation.
+- Confirm a regression test detects the old defect by testing the prior behavior in an isolated copy when needed.
+- Reuse project test commands and infrastructure.
 
-## Anti-Patterns (Reject These)
-| Pattern | Why it fails |
-|---------|--------------|
-| Implementation-coupled | Test breaks on refactor even when behavior is unchanged |
-| Tautological | Assertion recomputes the expected value the same way the code does |
-| Horizontal slicing | All tests written first, then all implementation — tests become insensitive |
-| Coverage theater | Adding tests only to raise a percentage |
+## Example
+For a single-use token, test the second use and concurrent consumption, not just a successful first request.
 
-## Verification
-- [ ] Seam was agreed before the test was written
-- [ ] Test failed for the right reason before any production code
-- [ ] Test lives at a public interface
-- [ ] No tautological or implementation-coupled assertions
-- [ ] Cycle committed before the next one starts
+## Stop conditions
+For static content or a change that cannot usefully be represented by an automated test, record the reason and a repeatable alternative. Do not invent test output or add a test merely to mirror implementation.
+
+## Evidence
+- [ ] Pre-fix failure and post-fix pass are recorded.
+- [ ] Assertions establish the requested behavior independently.
+- [ ] Relevant regression results and integration limits are explicit.

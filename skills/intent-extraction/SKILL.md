@@ -1,28 +1,25 @@
 ---
 name: intent-extraction
-description: "Extract true intent one question at a time until ~95% confidence. Use when the ask is underspecified or the user says interview me / grill me."
-type: workflow
-lifecycle: active
+description: "Clarify an underspecified outcome or conduct a requirements interview when material choices remain unresolved."
 ---
 
-# Requirements Interrogation — Extract What Is Actually Wanted
-
-Do not start work until intent is confirmed. Surface assumptions before any plan or code.
+# Intent Extraction
+Clarify what changes the implementation, then proceed within the user's authorized scope.
 
 ## Process
-1. State hypothesis + confidence (0-100%) + what is still missing.
-2. Ask one focused question with your best guess attached.
-3. Update hypothesis after each answer.
-4. Restate full intent (Outcome / User / Why now / Success / Constraint / Out of scope).
-5. Require explicit "yes". Stop if confidence cannot reach ~95%.
+1. Read the request, relevant repository context, and decisions already made.
+2. State the outcome, success criteria, constraints, and material unknowns. Avoid invented confidence percentages.
+3. Ask one focused question at a time when different answers would change scope, cost, data handling, or behavior. Attach a reasonable recommendation.
+4. Treat explicit delegation such as "use your judgment" as permission to decide routine details. Record the assumption and continue.
+5. Restate the resulting scope briefly. Existing authorization is sufficient; request confirmation only for an unresolved consequential choice or a boundary requiring it.
 
-## Rules
-- One question per turn.
-- Never accept "whatever you think" as confirmation.
-- Probe "what would you actually want if you didn't have to justify it?" on vague answers.
+## Example
+"Add CSV export" may require asking which records the user can export. Delimiter choice can follow existing conventions without another approval.
 
-## Verification
-- [ ] Explicit hypothesis with confidence stated first
-- [ ] Questions asked one at a time with guesses
-- [ ] Concrete restate confirmed with explicit yes
-- [ ] Out of scope declared
+## Stop conditions
+Do not guess an access rule, destructive action, or materially different product outcome. Continue independent work while that question is pending.
+
+## Evidence
+- [ ] Outcome and acceptance criteria are concrete.
+- [ ] Material unknowns are resolved or explicitly pending.
+- [ ] Routine assumptions and existing authorization are preserved.

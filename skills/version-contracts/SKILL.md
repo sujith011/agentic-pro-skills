@@ -1,22 +1,25 @@
 ---
 name: version-contracts
-description: "Treat public interfaces as versioned contracts. Use when changing any API, library surface, or exported type."
-type: workflow
-lifecycle: active
+description: "Assess compatibility and plan migration when changing a published API, package surface, or externally consumed type."
 ---
 
-# Version Contracts — Stable Surfaces
-
-Breaking changes require an explicit version bump and migration path.
+# Version Contracts
+Classify compatibility using real consumers and the project's versioning policy.
 
 ## Process
-1. Identify all public consumers.
-2. Decide if the change is additive, compatible, or breaking.
-3. For breaking changes, write a migration guide and bump the major version.
-4. Keep the old contract working for at least one release when possible.
-5. Document the change in the changelog.
+1. Identify public consumers and supported versions.
+2. Check source, wire, and behavior compatibility, including errors, defaults, and ordering.
+3. Add contract tests for existing consumers when feasible.
+4. For a breaking change, document upgrade steps and follow the project's versioning/deprecation policy.
+5. Define the compatibility window and removal condition; record the change in release notes.
 
-## Verification
-- [ ] Change classified (additive / compatible / breaking)
-- [ ] Migration path exists for breaking changes
-- [ ] Changelog updated
+## Example
+Adding a required response field is usually additive for tolerant clients, but adding an enum variant can break exhaustive consumers. Inspect the consumers before classifying it.
+
+## Stop conditions
+Do not mandate a package major-version bump for every internal API or invent a deprecation window the project cannot support.
+
+## Evidence
+- [ ] Compatibility classification includes consumer evidence.
+- [ ] Breaking changes have actionable migration steps.
+- [ ] Release/version changes follow project policy.

@@ -1,22 +1,25 @@
 ---
 name: adr-record
-description: "Record significant architecture decisions. Use when choosing between meaningful technical alternatives."
-type: workflow
-lifecycle: active
+description: "Record a durable architecture decision when choosing among alternatives that affect system boundaries, compatibility, or operations."
 ---
 
-# Architecture Decision Record — Decide Once
-
-Write down why a decision was made so the next person does not reverse it blindly.
+# ADR Record
+Capture why a lasting decision is appropriate for this system.
 
 ## Process
-1. State the context and the options considered.
-2. Record the decision and the rationale.
-3. Note the consequences and trade-offs.
-4. Save as an ADR in the repo.
-5. Link to it from the relevant code or spec.
+1. Locate existing ADRs and follow their numbering and format.
+2. Record status, context, constraints, alternatives, decision, consequences, and evidence.
+3. Include reversal cost and conditions that would justify revisiting the decision.
+4. Link from the relevant specification or design document.
+5. Supersede an older ADR explicitly instead of silently rewriting history.
 
-## Verification
-- [ ] Context and options listed
-- [ ] Decision and rationale recorded
-- [ ] ADR committed
+## Example
+An ADR selecting a queue should state required delivery semantics, retry/idempotency design, operational cost, and the alternatives rejected.
+
+## Stop conditions
+Do not create an ADR for every routine implementation choice or present an untested assumption as a benchmark.
+
+## Evidence
+- [ ] Decision follows stated constraints.
+- [ ] Alternatives and consequences are specific.
+- [ ] Status and revisit conditions are recorded.

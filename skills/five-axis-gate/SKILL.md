@@ -1,28 +1,35 @@
 ---
 name: five-axis-gate
-description: "Five-axis review before merge: correctness, readability, architecture, security, performance. Use before any merge."
+description: "Five-axis review gate before merge. Correctness, readability, architecture, security, performance. Use before any merge."
 type: workflow
 lifecycle: active
 ---
 
-# Multi-Axis Review — Improve Code Health
+# Five-Axis Gate — No Merge Without Evidence
 
-Review is a gate, not optional polish.
+Review is a hard gate. Do not approve until every axis has evidence.
 
-## Axes
-1. Correctness — does it match the spec and tests?
-2. Readability — can a new engineer understand it quickly?
-3. Architecture — does it fit existing patterns?
-4. Security — any new risks?
-5. Performance — any measurable regressions?
+## Axes and What to Score
+| Axis | Pass condition |
+|------|----------------|
+| **Correctness** | Matches the approved spec and existing tests. No silent behavior changes. |
+| **Readability** | A new engineer can understand the change in under 5 minutes. Names reveal intent. |
+| **Architecture** | Fits existing patterns or explicitly records a new decision (ADR). |
+| **Security** | No new trust-boundary violations, secret leaks, or unvalidated inputs. |
+| **Performance** | No measurable regression, or the regression is measured and accepted. |
 
 ## Process
-1. Diff against the approved task.
-2. Score each axis with evidence.
-3. List must-fix items.
-4. Do not approve until must-fix items are resolved.
+1. Diff against the approved task or spec.
+2. For each axis, write one sentence of evidence (or “fails because…”).
+3. List must-fix items. Defer only with an explicit reason and owner.
+4. Do not mark the review complete until must-fix items are resolved or deferred.
+
+## Anti-Rationalizations
+- “It’s small, skip review” → Size does not remove risk.
+- “Tests passed, so it’s fine” → Tests do not cover architecture or security.
+- “I’ll fix it later” → Later is how debt accumulates.
 
 ## Verification
-- [ ] All five axes addressed
-- [ ] Must-fix items resolved or explicitly deferred with reason
-- [ ] Review recorded
+- [ ] All five axes have written evidence
+- [ ] Must-fix items resolved or explicitly deferred
+- [ ] Review recorded in the PR or commit message

@@ -2,7 +2,7 @@
 
 20 expert-level engineering skills for Claude Code and other AI coding agents.
 
-Tighter gates. Stronger verification. Higher signal than generic collections.
+Tighter gates. Stronger verification. Higher signal. Distinct from other collections.
 
 ## Lifecycle
 
@@ -14,26 +14,26 @@ DEFINE → PLAN → BUILD → VERIFY → REVIEW → SHIP
 
 | Skill | Purpose |
 |-------|---------|
-| requirements-interrogation | Extract true intent one question at a time |
-| idea-refinement | Turn vague ideas into concrete proposals |
-| spec-driven-development | Write a complete PRD before any code |
-| constraint-enforcement | Decide the quality bar once and enforce it |
-| task-planning | Decompose into small, verifiable tasks |
-| incremental-build | Thin vertical slices with commit per slice |
-| test-driven-development | Red-Green-Refactor. Tests are proof |
-| context-packing | Feed the right information at the right time |
-| codebase-grounding | Understand existing code before changing it |
-| interface-design | Design clean contracts before implementation |
-| ui-engineering | Accessible, performant UI components |
-| systematic-debugging | Reproduce → localize → reduce → fix → guard |
-| multi-axis-review | Five-axis review before merge |
-| code-simplification | Reduce complexity while preserving behavior |
-| security-hardening | Harden inputs, auth, and secrets |
-| performance-audit | Measure before you optimize |
-| browser-verification | Verify UI in a real browser |
-| git-discipline | Small, meaningful commits |
-| ship-checklist | Pre-launch verification gate |
-| skill-orchestration | Route work to the correct skill |
+| intent-extraction | Extract true intent one question at a time |
+| concept-sharpening | Turn vague ideas into concrete proposals |
+| prd-first | Write a complete PRD before any code |
+| quality-bar | Decide the quality bar once and enforce it |
+| atomic-task-breakdown | Decompose into small, verifiable tasks |
+| vertical-slices | Thin vertical slices with commit per slice |
+| proof-first-testing | Red-Green-Refactor. Tests are proof |
+| curated-context | Feed the right information at the right time |
+| understand-first | Understand existing code before changing it |
+| contract-first | Design clean contracts before implementation |
+| accessible-ui | Accessible, performant UI components |
+| root-cause-debug | Reproduce → localize → reduce → fix → guard |
+| five-axis-gate | Five-axis review before merge |
+| clarity-refactor | Reduce complexity while preserving behavior |
+| threat-surface | Harden inputs, auth, and secrets |
+| measure-first | Measure before you optimize |
+| real-browser-check | Verify UI in a real browser |
+| atomic-commits | Small, meaningful commits |
+| pre-ship-gate | Pre-launch verification gate |
+| skill-router | Route work to the correct skill |
 
 ## Usage
 

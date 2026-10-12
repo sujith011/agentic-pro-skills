@@ -1,22 +1,25 @@
 ---
 name: real-browser-check
-description: "Verify UI behavior in a real browser. Use for any user-facing change that cannot be fully proven by unit tests."
-type: workflow
-lifecycle: active
+description: "Exercise critical interactive web flows in a real browser after a UI or integration change."
 ---
 
-# Browser Verification — Real Browser Proof
-
-Unit tests are not enough for interactive UI.
+# Real Browser Check
+Verify the user's observable flow and state transitions.
 
 ## Process
-1. Identify the critical user flows.
-2. Exercise them in a real browser (or headless with screenshots).
-3. Check console errors, network failures, and layout.
-4. Confirm the change works as specified.
-5. Capture evidence (screenshots or notes).
+1. Select flows affected by the change, with expected outcomes and test data.
+2. Run against the intended local or staging environment using an isolated test account when writes are involved.
+3. Exercise success, validation/failure, keyboard use, and relevant responsive layout.
+4. Inspect console and network results; distinguish existing errors from regressions.
+5. Record browser, viewport, environment, steps, and evidence. Automated assertions are preferred for repeatable behavior; screenshots supplement them.
 
-## Verification
-- [ ] Critical flows exercised in browser
-- [ ] No new console or network errors
-- [ ] Behavior matches spec
+## Example
+For checkout, verify totals, validation, a simulated declined payment, and successful completion using a test provider.
+
+## Stop conditions
+Do not perform purchases or alter production records without authorization. A mocked backend verifies UI behavior only; a screenshot alone does not verify an interactive flow.
+
+## Evidence
+- [ ] Critical flows have observed outcomes.
+- [ ] Console/network findings are accounted for.
+- [ ] Backend and environment limits are disclosed.

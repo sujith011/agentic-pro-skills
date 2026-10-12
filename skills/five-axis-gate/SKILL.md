@@ -1,35 +1,34 @@
 ---
 name: five-axis-gate
-description: "Five-axis review gate before merge. Correctness, readability, architecture, security, performance. Use before any merge."
-type: workflow
-lifecycle: active
+description: "Review a proposed change for correctness, readability, architecture, security, and performance with evidence appropriate to risk."
 ---
 
-# Five-Axis Gate — No Merge Without Evidence
-
-Review is a hard gate. Do not approve until every axis has evidence.
-
-## Axes and What to Score
-| Axis | Pass condition |
-|------|----------------|
-| **Correctness** | Matches the approved spec and existing tests. No silent behavior changes. |
-| **Readability** | A new engineer can understand the change in under 5 minutes. Names reveal intent. |
-| **Architecture** | Fits existing patterns or explicitly records a new decision (ADR). |
-| **Security** | No new trust-boundary violations, secret leaks, or unvalidated inputs. |
-| **Performance** | No measurable regression, or the regression is measured and accepted. |
+# Five-Axis Gate
+Lead with consequential findings and give a concrete remedy.
 
 ## Process
-1. Diff against the approved task or spec.
-2. For each axis, write one sentence of evidence (or “fails because…”).
-3. List must-fix items. Defer only with an explicit reason and owner.
-4. Do not mark the review complete until must-fix items are resolved or deferred.
+1. Read the request, acceptance criteria, diff, and relevant surrounding code.
+2. Check tests and whether they would detect the defect or behavior change.
+3. Review each axis using the table below. Distinguish observed evidence from inference.
+4. Categorize findings as critical, required, or optional; cite location, trigger, impact, and fix.
+5. Record resolved items and explicitly accepted deferrals with owner and reason.
+6. Give a verdict bounded by the checks actually performed.
 
-## Anti-Rationalizations
-- “It’s small, skip review” → Size does not remove risk.
-- “Tests passed, so it’s fine” → Tests do not cover architecture or security.
-- “I’ll fix it later” → Later is how debt accumulates.
+| Axis | Evidence to seek |
+|------|------------------|
+| Correctness | Behavior and failure paths match criteria; appropriate tests or reproducible checks pass. |
+| Readability | Names, control flow, and boundaries make the behavior understandable without hidden assumptions. |
+| Architecture | Ownership and dependencies fit the system; new abstractions earn their cost. |
+| Security | Relevant trust boundaries, authorization, input handling, and secret exposure were inspected. |
+| Performance | Affected hot paths and resource risks were assessed; measure when a regression is plausible. |
 
-## Verification
-- [ ] All five axes have written evidence
-- [ ] Must-fix items resolved or explicitly deferred
-- [ ] Review recorded in the PR or commit message
+## Example
+An authorization finding names the endpoint and unauthorized caller that can read another tenant's data, with a suggested ownership check and regression case.
+
+## Stop conditions
+Do not approve a known exploitable defect or data-loss issue based on an unspecified future fix. Mark an axis not applicable with a reason when it truly has no affected surface. Do not mutate code during a read-only review.
+
+## Evidence
+- [ ] Each applicable axis has supporting evidence.
+- [ ] Findings separate blockers from suggestions.
+- [ ] Verdict includes test and runtime limitations.

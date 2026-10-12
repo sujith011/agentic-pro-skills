@@ -1,23 +1,25 @@
 ---
 name: root-cause-debug
-description: "Reproduce, localize, reduce, fix, guard. Use for any bug or unexpected behavior."
-type: workflow
-lifecycle: active
+description: "Investigate a reproducible defect or unexpected behavior and verify the smallest supported root-cause fix."
 ---
 
-# Systematic Debugging — Five Steps, No Skipping
-
-Do not guess. Follow the sequence.
+# Root-Cause Debug
+Maintain a falsifiable hypothesis, not a sequence of speculative patches.
 
 ## Process
-1. Reproduce reliably (minimal steps).
-2. Localize the failure (narrow the code path).
-3. Reduce to the smallest failing case.
-4. Fix the root cause.
-5. Add a regression test that fails before the fix and passes after.
+1. Record expected versus actual behavior, environment, and minimal reproduction.
+2. Inspect the path and form a hypothesis with a predicted observation.
+3. Run the smallest diagnostic that can distinguish competing causes.
+4. Reduce the reproduction and add a regression check that fails before the fix.
+5. Fix the cause, rerun the reproduction and related checks, and explain why the result supports the hypothesis.
 
-## Verification
-- [ ] Reproduction steps documented
-- [ ] Root cause identified (not just symptom)
-- [ ] Regression test added
-- [ ] Fix verified
+## Example
+For intermittent duplicate records, investigate retries and transaction boundaries before adding a client-side disabled button.
+
+## Stop conditions
+If reproduction needs unavailable access, collect independent source evidence and mark the runtime conclusion unverified. Do not repeatedly make changes without new evidence.
+
+## Evidence
+- [ ] Trigger and environment are reproducible.
+- [ ] Root cause is supported by a distinguishing observation.
+- [ ] The regression check detects the defect and passes after repair.

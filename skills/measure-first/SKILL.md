@@ -1,23 +1,26 @@
 ---
 name: measure-first
-description: "Measure before you optimize. Use when latency, load time, or resource use is in question. Prefer evidence over guesses."
-type: workflow
-lifecycle: active
+description: "Diagnose a suspected performance or resource regression using a repeatable baseline before optimization."
 ---
 
-# Performance Audit — Measure Before Optimize
-
-Do not optimize without a measurement that shows the problem.
+# Measure First
+Optimize the dominant measured cost and preserve correctness.
 
 ## Process
-1. Define the metric that matters (LCP, response time, memory, etc.).
-2. Measure the current baseline.
-3. Identify the dominant cost.
-4. Make the smallest change that addresses it.
-5. Re-measure and confirm improvement.
-6. Stop if the gain is negligible.
+1. Define the metric, representative workload, environment, and acceptance target.
+2. Warm up when appropriate and collect repeated baseline measurements.
+3. Profile to localize the dominant cost rather than guessing.
+4. Make one targeted change and rerun the same workload.
+5. Compare distributions and resource usage, not a single best run. Recheck behavior.
+6. Retain the change only if the measured benefit justifies complexity.
 
-## Verification
-- [ ] Baseline measured
-- [ ] Change targeted at measured bottleneck
-- [ ] Post-change measurement shows improvement or is abandoned
+## Example
+For slow list rendering, compare render duration and interaction latency on the same dataset/device before introducing memoization.
+
+## Stop conditions
+Do not claim a tiny improvement that is within measurement noise or compare different workloads as if they were equivalent.
+
+## Evidence
+- [ ] Baseline and candidate use comparable conditions.
+- [ ] Profiling supports the targeted change.
+- [ ] Results, variability, and correctness checks are recorded.

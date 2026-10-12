@@ -1,22 +1,25 @@
 ---
 name: atomic-commits
-description: "Small, meaningful commits with clear messages. Use on every change. Keep history readable."
-type: workflow
-lifecycle: active
+description: "Prepare coherent Git commits when the user or repository workflow authorizes committing changes."
 ---
 
-# Git Discipline — Clean History
-
-One logical change per commit. Messages explain why.
+# Atomic Commits
+Preserve user work and make each commit understandable on its own.
 
 ## Process
-1. Stage only the files that belong to the current slice.
-2. Write a message that states the intent (not just "fix").
-3. Commit.
-4. Do not mix unrelated changes.
-5. Prefer rebasing or clean history over merge commits for personal work.
+1. Inspect status and diff before staging; distinguish current task edits from existing work.
+2. Group one logical behavior or repair with its necessary tests/docs.
+3. Stage explicit paths or hunks and inspect the staged diff for unrelated edits and secrets.
+4. Run appropriate checks and write an intent-focused message.
+5. Commit when authorized; pushing, merging, and history rewriting require their own scope/authorization.
 
-## Verification
-- [ ] Commit is atomic
-- [ ] Message describes intent
-- [ ] No unrelated files included
+## Example
+A validation fix and its regression test belong together. An unrelated dependency upgrade does not.
+
+## Stop conditions
+Do not stage everything blindly, reset user work, amend another person's commit, or rebase shared history without authorization. A read-only review never authorizes a commit.
+
+## Evidence
+- [ ] Staged changes match task scope.
+- [ ] Message explains the behavioral change or reason.
+- [ ] Verification is recorded and user work is preserved.

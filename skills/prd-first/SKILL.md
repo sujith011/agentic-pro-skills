@@ -1,38 +1,26 @@
 ---
 name: prd-first
-description: "Write a complete, testable PRD before any code. Spec is the source of truth. Use when starting a feature, project, or significant change."
-type: workflow
-lifecycle: active
+description: "Define testable scope for a new feature or significant behavior change; use a brief acceptance note for a small settled fix."
 ---
 
-# PRD First — Spec Is the Contract
-
-No implementation starts until the PRD is reviewed and explicitly approved.
-
-## Required Sections
-| Section | What it must contain |
-|---------|----------------------|
-| Objective | What and why, in one paragraph |
-| Acceptance criteria | Numbered, testable statements |
-| Out of scope | Explicit list of what will not be built |
-| Commands | How to build, test, lint, and run |
-| Boundaries | What the change may and may not touch |
-| Success criteria | How we know it is done |
+# PRD First
+Make the intended behavior reviewable before implementation. Scale the document to the change.
 
 ## Process
-1. Draft every required section.
-2. List open questions and resolve them with the user.
-3. Require an explicit “yes” before any code or task breakdown.
-4. Save as `SPEC.md` (or `docs/SPEC.md`) and commit it.
-5. Only then allow planning or implementation.
+1. Inspect relevant behavior and existing specifications before creating another source of truth.
+2. For a small fix, record the trigger, expected outcome, and verification in the task or PR. For substantial work, create or update SPEC.md.
+3. Include objective, acceptance criteria, boundaries, compatibility requirements, failure cases, and actual build/test/run commands.
+4. Resolve unknowns that change product scope or irreversible actions. A direct implementation request or delegated judgment already authorizes routine implementation.
+5. Update the spec if scope changes; keep documentation and code in the same reviewable change. Commit only when authorized by the task or repository convention.
 
-## Anti-Rationalizations
-- “I already know what to build” → Write it down anyway. Memory is not a contract.
-- “We can refine the spec later” → Later is how scope creeps.
-- “The acceptance criteria are obvious” → If they are not testable, they are not criteria.
+## Example
+Password-reset acceptance criteria include token expiry, single use, generic account-discovery responses, and expected behavior after a second request.
 
-## Verification
-- [ ] Every required section is present
-- [ ] Acceptance criteria are independently testable
-- [ ] User gave an explicit approval
-- [ ] SPEC.md is committed before any implementation commit
+## Stop conditions
+Do not invent requirements or repeatedly require "yes" for decisions already authorized. Mark unavailable verification commands honestly.
+
+## Evidence
+- [ ] Criteria describe observable behavior and failure cases.
+- [ ] Boundaries and compatibility are explicit.
+- [ ] Commands are verified or marked unavailable.
+- [ ] Implementation matches the current scope.

@@ -1,22 +1,25 @@
 ---
 name: incident-playbook
-description: "Write the incident response steps before the feature ships. Use for any change that can cause user-visible failure."
-type: workflow
-lifecycle: active
+description: "Prepare a concise recovery runbook for a new critical path or an operationally risky release."
 ---
 
-# Incident Playbook — Know How to Recover
-
-Do not ship something you do not know how to fix at 2 a.m.
+# Incident Playbook
+Make detection and recovery executable for the person on call.
 
 ## Process
-1. List the most likely failure modes.
-2. Write the detection signal for each.
-3. Write the immediate mitigation (rollback, flag off, etc.).
-4. Note who to page and what data to collect.
-5. Store the playbook next to the code.
+1. Identify likely failures and the observable signal for each.
+2. Record impact, diagnostic query/dashboard, and initial mitigation.
+3. Include exact environment-specific recovery commands only after verifying their target and expected effect.
+4. State who owns escalation, how to verify recovery, and when to stop a failing mitigation.
+5. Rehearse in a safe environment where practical and store beside existing runbooks.
 
-## Verification
-- [ ] Failure modes listed
-- [ ] Mitigation steps written
-- [ ] Playbook accessible
+## Example
+For a queue backlog: inspect age/error metrics, identify a poisoned payload, pause the affected consumer if authorized, and verify age falls after mitigation.
+
+## Stop conditions
+Do not invent on-call contacts, publish secrets in commands, or execute destructive production recovery solely because a runbook describes it.
+
+## Evidence
+- [ ] Detection and mitigation are actionable.
+- [ ] Owner, recovery verification, and abort conditions exist.
+- [ ] Rehearsed steps and untested assumptions are distinguished.

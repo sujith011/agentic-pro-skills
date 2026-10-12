@@ -1,35 +1,27 @@
 ---
 name: vertical-slices
-description: "Implement in thin vertical slices. One behavior, one commit. Use for any change touching more than one file."
-type: workflow
-lifecycle: active
+description: "Deliver a multi-layer behavior change in small end-to-end increments with a consistent test-first verification sequence."
 ---
 
-# Vertical Slices — One Tracer Bullet at a Time
-
-Finish one complete vertical slice (behavior + test + commit) before starting the next.
+# Vertical Slices
+Complete one observable behavior before starting the next.
 
 ## Process
-1. Pick the next acceptance criterion from the approved plan.
-2. Implement the smallest change that satisfies it end-to-end.
-3. Prove it with a test at the public seam.
-4. Run the relevant test suite.
-5. Commit with a message that names the behavior.
-6. Only then start the next slice.
+1. Select the next acceptance criterion and identify the public seam.
+2. Write a failing behavior test and run it to confirm failure for the expected reason.
+3. Implement the smallest end-to-end change that passes it.
+4. Run relevant regression checks; verify integration when mocks cannot establish the criterion.
+5. Refactor after green and rerun checks.
+6. Record evidence and, when committing is authorized, make one coherent commit before the next slice.
 
-## Rules
-- **One slice, one commit.** No mixed changes.
-- **Never leave the codebase broken.** If the slice fails, fix it before proceeding.
-- **Prefer flags or safe defaults** for anything that cannot be rolled back by a single commit.
-- **Tracer bullet first.** The first slice should prove the path works, even if it is incomplete.
+## Example
+For a protected export endpoint, first prove an authorized user gets the expected file; then prove another tenant cannot export those records.
 
-## Anti-Rationalizations
-- “I’ll batch these small changes” → Batching hides failures and makes review harder.
-- “The tests can come later” → Later is when the slice is already wrong.
-- “This is too small to commit” → Small commits are the point.
+## Stop conditions
+If a failing automated test cannot represent the change, record why and use a repeatable baseline/recheck (for example a visual review). Never invent a red result or force a meaningless test for static content.
 
-## Verification
-- [ ] Each slice has its own commit
-- [ ] Tests for the slice pass
-- [ ] The codebase is green after every commit
-- [ ] No unrelated changes are mixed into the slice
+## Evidence
+- [ ] Failing check precedes implementation for changed behavior.
+- [ ] The slice satisfies an observable criterion.
+- [ ] Relevant checks pass or unresolved limits are explicit.
+- [ ] Unrelated changes are excluded.

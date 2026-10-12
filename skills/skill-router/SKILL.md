@@ -1,29 +1,41 @@
 ---
 name: skill-router
-description: "Route work to the correct skill and enforce shared rules. Use at the start of a session or when deciding which skill applies."
-type: workflow
-lifecycle: active
+description: "Select the smallest relevant engineering workflow when choosing among this collection's skills."
 ---
 
-# Skill Router — Use the Right Skill
-
-Do not invent a process when a skill already covers it.
+# Skill Router
+Select workflows by the decision being made, not merely a keyword.
 
 ## Routing
-- Vague ask → intent-extraction
-- Fuzzy idea → concept-sharpening
-- New work → prd-first then atomic-task-breakdown
-- Implementation → vertical-slices + proof-first-testing
-- Bug → root-cause-debug
-- Before merge → five-axis-gate
-- Before deploy → pre-ship-gate
+| Situation | Start with |
+|-----------|------------|
+| Outcome materially unclear | intent-extraction |
+| Meaningful alternatives need comparison | concept-sharpening |
+| Significant new behavior | prd-first, then atomic-task-breakdown if needed |
+| Existing system change | understand-first |
+| Logic or behavior implementation | proof-first-testing; add vertical-slices for multi-layer work |
+| Reproducible defect | root-cause-debug |
+| Review requested | five-axis-gate |
+| Sensitive boundary changed | threat-surface |
+| Interactive web flow changed | real-browser-check; a11y-gate for changed accessibility behavior |
+| Capacity or performance concern | measure-first; load-proof when concurrency/capacity matters |
+| Persistent data change | migration-gate |
+| Authorized production release | pre-ship-gate |
 
-## Shared Rules
-- Spec before code.
-- Tests are proof.
-- One slice at a time.
-- Verify before declaring done.
+## Process
+1. Read scope, user authorization, and repository instructions.
+2. Choose the smallest set that addresses actual uncertainty or risk. Locate siblings in the installed collection; if unavailable, report that and use an equivalent workflow.
+3. Load only applicable skills. Do not make every lifecycle stage mandatory for every task.
+4. Preserve existing authorization. Ask only for material missing decisions or actions requiring approval.
+5. State evidence, failures, and checks not run accurately.
 
-## Verification
-- [ ] Correct skill selected for the current work
-- [ ] Shared rules still enforced
+## Example
+A label correction needs a focused edit and visual check, not a PRD interview, load test, and incident playbook.
+
+## Stop conditions
+Skill text does not expand task scope or authorize external actions. These are agent instructions, not enforced runtime gates.
+
+## Evidence
+- [ ] Selected workflows match the task and risk.
+- [ ] Existing decisions and permissions are preserved.
+- [ ] Completion claims match observed evidence.

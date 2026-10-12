@@ -4,7 +4,7 @@
 
 **32 expert-level engineering skills for Claude Code and other AI coding agents**
 
-Tighter gates · Stronger verification · Higher signal
+Tighter gates · Stronger verification · Higher signal than other collections
 
 [![Skills](https://img.shields.io/badge/Skills-32-brightgreen?style=for-the-badge&logo=claude&logoColor=white)](https://github.com/sujith011/expert-engineering-skills)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
@@ -36,6 +36,20 @@ Tighter gates · Stronger verification · Higher signal
 
 ---
 
+## Why these are different
+
+| Other collections | This collection |
+|-------------------|-----------------|
+| Often skip or soften gates | Hard gates with explicit verification |
+| Generic advice | Opinionated process + anti-rationalization tables |
+| Tests as optional | Proof-first testing with seam rules and anti-patterns |
+| Review as optional polish | Five-axis gate with evidence required |
+| Large, process-owning frameworks | Lean, composable skills you can use individually |
+
+Inspired by the best practices in the ecosystem (including Matt Pocock’s skills), but tightened further: every skill has numbered steps, explicit rejection criteria, and a verification checklist that must pass before the work is considered done.
+
+---
+
 ## Skills
 
 ### Define
@@ -43,7 +57,7 @@ Tighter gates · Stronger verification · Higher signal
 |-------|---------|
 | [`intent-extraction`](skills/intent-extraction/SKILL.md) | Extract true intent one question at a time until ~95% confidence |
 | [`concept-sharpening`](skills/concept-sharpening/SKILL.md) | Turn a vague idea into concrete, evaluable proposals |
-| [`prd-first`](skills/prd-first/SKILL.md) | Write a complete PRD before any code |
+| [`prd-first`](skills/prd-first/SKILL.md) | Write a complete, testable PRD before any code |
 | [`quality-bar`](skills/quality-bar/SKILL.md) | Decide the quality bar once and enforce it everywhere |
 | [`docs-before-code`](skills/docs-before-code/SKILL.md) | Write the user-facing documentation before or alongside the implementation |
 
@@ -56,7 +70,7 @@ Tighter gates · Stronger verification · Higher signal
 ### Build
 | Skill | Purpose |
 |-------|---------|
-| [`vertical-slices`](skills/vertical-slices/SKILL.md) | Implement in thin vertical slices — code, test, verify, commit |
+| [`vertical-slices`](skills/vertical-slices/SKILL.md) | Implement in thin vertical slices — one behavior, one commit |
 | [`curated-context`](skills/curated-context/SKILL.md) | Feed the agent the right information at the right time |
 | [`understand-first`](skills/understand-first/SKILL.md) | Read and understand existing code before modifying it |
 | [`contract-first`](skills/contract-first/SKILL.md) | Design clean APIs and interfaces before implementation |
@@ -68,7 +82,7 @@ Tighter gates · Stronger verification · Higher signal
 ### Verify
 | Skill | Purpose |
 |-------|---------|
-| [`proof-first-testing`](skills/proof-first-testing/SKILL.md) | Red-Green-Refactor. Tests are proof |
+| [`proof-first-testing`](skills/proof-first-testing/SKILL.md) | Red-Green-Refactor with seam rules and anti-patterns |
 | [`root-cause-debug`](skills/root-cause-debug/SKILL.md) | Reproduce → localize → reduce → fix → guard |
 | [`real-browser-check`](skills/real-browser-check/SKILL.md) | Verify UI behavior in a real browser |
 | [`measure-first`](skills/measure-first/SKILL.md) | Measure before you optimize |
@@ -79,7 +93,7 @@ Tighter gates · Stronger verification · Higher signal
 ### Review
 | Skill | Purpose |
 |-------|---------|
-| [`five-axis-gate`](skills/five-axis-gate/SKILL.md) | Five-axis review: correctness, readability, architecture, security, performance |
+| [`five-axis-gate`](skills/five-axis-gate/SKILL.md) | Five-axis review with evidence required on every axis |
 | [`clarity-refactor`](skills/clarity-refactor/SKILL.md) | Reduce complexity while preserving exact behavior |
 | [`threat-surface`](skills/threat-surface/SKILL.md) | Harden inputs, auth, and secrets |
 | [`safe-refactor`](skills/safe-refactor/SKILL.md) | Refactor only with a safety net of tests and small steps |
@@ -100,9 +114,8 @@ Tighter gates · Stronger verification · Higher signal
 
 **Claude Code**
 ```bash
-# Clone and point Claude Code at the skills folder
 git clone https://github.com/sujith011/expert-engineering-skills.git
-# Then copy or symlink skills/ into your Claude Code skills directory
+# Copy or symlink skills/ into your Claude Code skills directory
 ```
 
 **Any agent that supports SKILL.md**
@@ -111,7 +124,7 @@ git clone https://github.com/sujith011/expert-engineering-skills.git
 # Reference individual skills/NAME/SKILL.md files
 ```
 
-Each skill is self-contained. The agent loads it when the description matches the request.
+Each skill is self-contained and activates when its description matches the request.
 
 ---
 
@@ -125,14 +138,6 @@ Each skill is self-contained. The agent loads it when the description matches th
 | **Measure before optimize** | Baseline first. Change only what the data shows |
 | **Verify before ship** | Checklist gate. No silent exceptions |
 | **Clarity over cleverness** | Simpler code that a new engineer can understand faster |
-
----
-
-## Why these skills
-
-Most AI coding agents take the shortest path. They skip the spec, weaken tests, and ship without verification.
-
-These 32 skills encode the gates senior engineers actually use. They are opinionated, lean, and designed so the agent produces production-ready code with fewer correction rounds.
 
 ---
 

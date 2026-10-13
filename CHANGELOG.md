@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.0 - 2026-10-13
+
+Expanded engineering coverage: 56 self-contained skills, including 24 new workflows informed by a review of agentic-awesome-skills.
+
+### Added
+- Backend/data: system design, API implementation, event contracts, authorization, database modeling, query optimization, caching, background jobs, upload safety, and Python service design.
+- Frontend/mobile: state ownership and races, measured React performance, TypeScript trust boundaries, and mobile runtime verification.
+- Quality/delivery: complete user journeys, isolated test data, CI pipelines, container delivery, infrastructure review, and dependency upgrades.
+- AI/tools: LLM evaluation, RAG quality, structured output, and MCP tool design.
+- Recommended skill selections and source mapping pinned to the reviewed upstream commit, with license and provenance references.
+- Eight behavioral evaluation scenarios and two executable isolated defect fixtures for duplicate job delivery and semantic output validation.
+
+### Changed
+- Extended skill-router with domain-specific selection and updated the catalog/installation guidance for 56 skills.
+- Kept the six-skill installer default and portable name/description frontmatter.
+
+### Validation limits
+Repository checks and fixture baseline probes do not establish live-agent compliance. Comparative agent evaluations and native Claude Code/Codex discovery remain unrun.
+
 ## 0.1.0 - 2026-10-12
 
 First versioned release: practical, scoped engineering workflows.

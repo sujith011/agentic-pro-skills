@@ -2,9 +2,11 @@
 
 These cases test observable agent decisions. They are a starting suite, not published evidence of superiority. No live agent results are included in this release.
 
+The suite contains 18 scenarios. The v0.2.0 additions address job redelivery, semantic output validation, cache isolation, frontend races, retrieval access/freshness, infrastructure scope, upload handling, and MCP mutation retries.
+
 ## Run protocol
 
-1. Choose a case from [scenarios.json](scenarios.json) and prepare its stated setup in an isolated workspace. Only tenant-isolation includes an executable fixture; prepare other environments separately.
+1. Choose a case from [scenarios.json](scenarios.json) and prepare its stated setup in an isolated workspace. Tenant-isolation, duplicate-job-delivery, and semantic-model-output include executable fixtures; prepare other environments separately.
 2. Record agent/model version, settings, tools/permissions, base repository commit, skill commit, and exact prompt.
 3. Run once without the skill and once with the relevant skill(s), using identical setup and separate fresh sessions. Do not give the tested agent the grader checks or previous answer.
 4. Repeat at least three times per condition when comparing behavior; vary or randomize order. Include failed or blocked runs instead of discarding them.

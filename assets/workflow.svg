@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="168" viewBox="0 0 1200 168" role="img" aria-labelledby="title desc">
+  <title id="title">From intent to shipped software</title>
+  <desc id="desc">Define the outcome, plan the change, build a slice, verify behavior, review the evidence, and ship with confidence. Use only the stages relevant to your task.</desc>
+  <g font-family="Segoe UI, sans-serif">
+    <g transform="translate(0 0)"><rect width="188" height="168" rx="16" fill="#d9f4fb"/><text x="20" y="35" font-size="14" font-weight="700" fill="#21627b">01 / DEFINE</text><text x="20" y="82" font-size="22" font-weight="700" fill="#163447">Clear intent</text><text x="20" y="119" font-size="15" fill="#21627b">Find the real task.</text></g>
+    <g transform="translate(202 0)"><rect width="188" height="168" rx="16" fill="#eee6ff"/><text x="20" y="35" font-size="14" font-weight="700" fill="#634096">02 / PLAN</text><text x="20" y="82" font-size="22" font-weight="700" fill="#35234f">Small steps</text><text x="20" y="119" font-size="15" fill="#634096">Scope the change.</text></g>
+    <g transform="translate(404 0)"><rect width="188" height="168" rx="16" fill="#e2edff"/><text x="20" y="35" font-size="14" font-weight="700" fill="#355da0">03 / BUILD</text><text x="20" y="82" font-size="22" font-weight="700" fill="#20385f">Useful slices</text><text x="20" y="119" font-size="15" fill="#355da0">Implement a behavior.</text></g>
+    <g transform="translate(606 0)"><rect width="188" height="168" rx="16" fill="#dbf7ed"/><text x="20" y="35" font-size="14" font-weight="700" fill="#23694f">04 / VERIFY</text><text x="20" y="82" font-size="22" font-weight="700" fill="#174936">Real checks</text><text x="20" y="119" font-size="15" fill="#23694f">Observe the result.</text></g>
+    <g transform="translate(808 0)"><rect width="188" height="168" rx="16" fill="#fff0d6"/><text x="20" y="35" font-size="14" font-weight="700" fill="#86601d">05 / REVIEW</text><text x="20" y="82" font-size="22" font-weight="700" fill="#574015">Sound decisions</text><text x="20" y="119" font-size="15" fill="#86601d">Inspect the evidence.</text></g>
+    <g transform="translate(1010 0)"><rect width="190" height="168" rx="16" fill="#ffe4e2"/><text x="20" y="35" font-size="14" font-weight="700" fill="#93483f">06 / SHIP</text><text x="20" y="82" font-size="22" font-weight="700" fill="#612f29">Ready to release</text><text x="20" y="119" font-size="15" fill="#93483f">Check the rollout.</text></g>
+  </g>
+</svg>

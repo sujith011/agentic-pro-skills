@@ -1,4 +1,12 @@
+![Agentic Pro Skills — engineering workflows for Claude Code and Codex](assets/banner.svg)
+
 # Agentic Pro Skills
+
+[![Validation](https://img.shields.io/github/actions/workflow/status/sujith011/agentic-pro-skills/validate.yml?branch=main&style=flat-square&label=checks&labelColor=172c45&color=238467)](https://github.com/sujith011/agentic-pro-skills/actions/workflows/validate.yml)
+[![Latest release](https://img.shields.io/github/v/release/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=456eaf)](https://github.com/sujith011/agentic-pro-skills/releases)
+[![MIT license](https://img.shields.io/github/license/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=967020)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=ad5349)](https://github.com/sujith011/agentic-pro-skills/stargazers)
+
 
 Engineering workflows for Claude Code and Codex: reproduce bugs, test fixes, and show verification evidence.
 
@@ -61,11 +69,11 @@ Confirm which skill loaded in the session. For a ready-made practice task, follo
 
 | Task | Start with |
 |------|------------|
-| Understand an unfamiliar codebase | [understand-first](skills/understand-first/SKILL.md) |
-| Reproduce and fix a bug | [root-cause-debug](skills/root-cause-debug/SKILL.md), [proof-first-testing](skills/proof-first-testing/SKILL.md) |
-| Review an existing change | [five-axis-gate](skills/five-axis-gate/SKILL.md) |
-| Verify a changed browser flow | [real-browser-check](skills/real-browser-check/SKILL.md) |
-| Check authorization and input boundaries | [threat-surface](skills/threat-surface/SKILL.md) |
+| 🔎 Understand an unfamiliar codebase | [understand-first](skills/understand-first/SKILL.md) |
+| 🐛 Reproduce and fix a bug | [root-cause-debug](skills/root-cause-debug/SKILL.md), [proof-first-testing](skills/proof-first-testing/SKILL.md) |
+| 🧭 Review an existing change | [five-axis-gate](skills/five-axis-gate/SKILL.md) |
+| 🌐 Verify a changed browser flow | [real-browser-check](skills/real-browser-check/SKILL.md) |
+| 🛡️ Check authorization and input boundaries | [threat-surface](skills/threat-surface/SKILL.md) |
 
 These six skills are the installer default. Install additional workflows individually; see [recommended selections](docs/SKILL-SELECTION.md). A small label correction needs a focused edit and visual check; a destructive migration needs compatibility, data-integrity, and recovery evidence. A read-only review stays read-only.
 
@@ -77,9 +85,16 @@ Skills guide an agent; Markdown does not enforce a runtime gate. CI validates re
 
 ## Skills
 
+![Six engineering stages: Define, Plan, Build, Verify, Review, Ship](assets/workflow.svg)
+
+Choose the stages your task needs; a small fix does not require the entire lifecycle.
+
 The 24 additions in v0.2.0 cover implementation and operational boundaries beyond the original lifecycle workflows. Browse [recommended selections](docs/SKILL-SELECTION.md) and [reference provenance](docs/SOURCES.md).
 
 ### Define
+
+🩵 Clarify the outcome before choosing a solution.
+
 | Skill | Purpose |
 |-------|---------|
 | [`intent-extraction`](skills/intent-extraction/SKILL.md) | Extract true intent one question at a time when material decisions are unresolved |
@@ -89,12 +104,18 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`docs-before-code`](skills/docs-before-code/SKILL.md) | Write the user-facing documentation before or alongside the implementation |
 
 ### Plan
+
+🟣 Break meaningful changes into verifiable steps.
+
 | Skill | Purpose |
 |-------|---------|
 | [`atomic-task-breakdown`](skills/atomic-task-breakdown/SKILL.md) | Decompose a spec into small, verifiable, ordered tasks |
 | [`adr-record`](skills/adr-record/SKILL.md) | Record significant architecture decisions |
 
 ### Build
+
+🔵 Implement small behaviors with clear boundaries.
+
 | Skill | Purpose |
 |-------|---------|
 | [`vertical-slices`](skills/vertical-slices/SKILL.md) | Implement in thin vertical slices — one behavior, one commit |
@@ -107,6 +128,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`version-contracts`](skills/version-contracts/SKILL.md) | Treat public interfaces as versioned contracts |
 
 ### Verify
+
+🟢 Collect evidence that the changed behavior works.
+
 | Skill | Purpose |
 |-------|---------|
 | [`proof-first-testing`](skills/proof-first-testing/SKILL.md) | Red-Green-Refactor with seam rules and anti-patterns |
@@ -118,6 +142,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`dep-audit`](skills/dep-audit/SKILL.md) | Audit dependencies for known vulnerabilities and necessity |
 
 ### Review
+
+🟡 Examine correctness, clarity, and risk.
+
 | Skill | Purpose |
 |-------|---------|
 | [`five-axis-gate`](skills/five-axis-gate/SKILL.md) | Five-axis review with evidence required on every axis |
@@ -126,6 +153,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`safe-refactor`](skills/safe-refactor/SKILL.md) | Refactor only with a safety net of tests and small steps |
 
 ### Ship
+
+🟠 Prepare release, recovery, and observation.
+
 | Skill | Purpose |
 |-------|---------|
 | [`atomic-commits`](skills/atomic-commits/SKILL.md) | Small, meaningful commits with clear messages |
@@ -137,6 +167,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 
 
 ### Backend and data
+
+🗄️ Protect contracts, ownership, and data integrity.
+
 | Skill | Purpose |
 |-------|---------|
 | [`system-design`](skills/system-design/SKILL.md) | Compare service and storage boundaries for a new system or a significant architecture change using concrete workload and failure constraints. |
@@ -151,6 +184,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`python-service-design`](skills/python-service-design/SKILL.md) | Implement or review Python HTTP service boundaries, request-scoped resources, async execution, and durable work using the installed framework. |
 
 ### Frontend and mobile
+
+🎨 Handle state, accessibility, and real device behavior.
+
 | Skill | Purpose |
 |-------|---------|
 | [`frontend-state`](skills/frontend-state/SKILL.md) | Design or fix client, URL, and server state ownership, including request races, optimistic updates, and session changes. |
@@ -159,6 +195,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`mobile-runtime-check`](skills/mobile-runtime-check/SKILL.md) | Verify a changed mobile journey on identified devices or emulators, including permissions, lifecycle, offline behavior, and platform-specific limits. |
 
 ### Quality and delivery
+
+✅ Verify journeys and delivery boundaries.
+
 | Skill | Purpose |
 |-------|---------|
 | [`e2e-journeys`](skills/e2e-journeys/SKILL.md) | Test a complete user journey through a real application boundary using stable selectors, isolated state, and observable final outcomes. |
@@ -169,6 +208,9 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`dependency-upgrade`](skills/dependency-upgrade/SKILL.md) | Upgrade a dependency or framework through verified compatibility, migration guidance, reproducible installs, and relevant runtime checks. |
 
 ### AI and tools
+
+🤖 Evaluate model outputs and tool effects.
+
 | Skill | Purpose |
 |-------|---------|
 | [`llm-evaluation`](skills/llm-evaluation/SKILL.md) | Evaluate a model, prompt, retrieval, or agent-tool change against a fixed baseline with task-specific scoring, held-out cases, and failure evidence. |

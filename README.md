@@ -12,7 +12,7 @@ Engineering workflows for Claude Code and Codex: reproduce bugs, test fixes, and
 
 Version: **0.2.0** · [Release notes](CHANGELOG.md) · [MIT License](LICENSE)
 
-[Quickstart](#quickstart) · [Try a task](#try-a-task) · [Choose skills](docs/SKILL-SELECTION.md) · [Full catalog](#skills) · [Contribute](CONTRIBUTING.md)
+[Quickstart](#quickstart) · [Try a task](#try-a-task) · [Showcase](#showcase) · [Choose skills](docs/SKILL-SELECTION.md) · [Full catalog](#skills) · [Contribute](CONTRIBUTING.md)
 
 ## Quickstart
 
@@ -62,6 +62,12 @@ Do not commit or push.
 ```
 
 Confirm which skill loaded in the session. For a ready-made practice task, follow the [duplicate-job walkthrough](examples/duplicate-job.md): copy an isolated fixture, observe repeated credits, and ask your agent to fix the retry behavior.
+
+## Showcase
+
+See the [showcase guide](docs/SHOWCASE.md) for real usage reports: task, skills loaded, before/after behavior, commands, evidence, and limitations. No live-agent showcase reports have been published yet. The [duplicate-job walkthrough](examples/duplicate-job.md) is a reproducible practice task, not a completed agent demonstration.
+
+Tried a workflow? [Share your actual result](https://github.com/sujith011/agentic-pro-skills/issues/new?template=usage-report.yml), including failures. Want to record a short demo? Use the [recording guide](docs/DEMO.md).
 
 ## Choose the smallest useful workflow
 

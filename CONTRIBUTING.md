@@ -36,4 +36,6 @@ For changed behavioral guidance, select relevant cases from [the evaluation prot
 
 ## Review and releases
 
+For community setup and discovery, see the [owner configuration guide](docs/COMMUNITY-SETUP.md). [Workflow-specific post drafts](docs/PROMOTION.md) help explain a concrete use case; publish only through the maintainer's authorized accounts. Record actual outcomes using the [showcase format](docs/SHOWCASE.md).
+
 A PR should explain the changed agent behavior, why it matters, validation performed, and remaining limits. Add an entry to CHANGELOG.md and update VERSION plus the README version for a release. Tag only the intended verified commit. Do not claim superiority without comparable evaluation results.

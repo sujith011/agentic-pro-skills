@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Community and discovery
+- Added a README showcase entry point and evidence-based usage report format.
+- Added a short demo recording plan, workflow-specific post drafts, and owner instructions for topics, documentation homepage, and Discussions.
+- Kept unrecorded demonstrations and unpublished evaluations explicitly marked as pending.
+
 ### Visual refresh
 - Added an original SVG banner, a color-coded lifecycle graphic, live repository badges, and visual catalog markers.
 - Kept the quickstart, heading anchors, and full skill catalog accessible.

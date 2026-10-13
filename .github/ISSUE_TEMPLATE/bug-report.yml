@@ -1,0 +1,34 @@
+name: Bug report
+description: Report an installation, discovery, helper, or skill behavior problem.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Search existing issues first. Remove credentials, private code, and personal data from all output."
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, agent/model version, and collection version or commit.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the exact command or prompt and affected skill names. Use a minimal public example.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and evidence
+      description: Redacted error output, test results, or loading evidence. Say when a skill did not load or a check could not run.
+    validations:
+      required: true

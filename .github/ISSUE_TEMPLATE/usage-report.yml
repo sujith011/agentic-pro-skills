@@ -1,0 +1,34 @@
+name: Usage report
+description: Share what helped, failed, or added friction when you tried a skill.
+title: "[Usage]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Failures and mixed results are welcome. Remove credentials, private code, and personal data. A single run is useful feedback, not comparative proof."
+  - type: input
+    id: environment
+    attributes:
+      label: Agent, model, OS, and collection version
+    validations:
+      required: true
+  - type: input
+    id: skills
+    attributes:
+      label: Skills used
+      description: Include how you confirmed the skills loaded, or say discovery was unverified.
+    validations:
+      required: true
+  - type: textarea
+    id: task
+    attributes:
+      label: Task and observed outcome
+      description: What did you ask for? What helped, failed, or caused unnecessary work?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and limits
+      description: Share redacted commands/results or public artifacts. State checks not run; report baseline comparisons only if actually performed.
+    validations:
+      required: true

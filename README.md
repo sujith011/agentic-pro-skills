@@ -1,32 +1,79 @@
 # Agentic Pro Skills
 
-Professional engineering workflows for AI coding agents.
+Engineering workflows for Claude Code and Codex: reproduce bugs, test fixes, and show verification evidence.
 
-**56 engineering skills** for Claude Code, Codex, and agents that support SKILL.md.
+**56 engineering skills** for building, reviewing, testing, and shipping software. Start with six core workflows and add others when your task needs them.
 
 Version: **0.2.0** · [Release notes](CHANGELOG.md) · [MIT License](LICENSE)
 
-Practical workflows for defining, building, reviewing, and releasing software. Each skill includes decision criteria, a concrete example, stop conditions, and evidence to collect.
+[Quickstart](#quickstart) · [Try a task](#try-a-task) · [Choose skills](docs/SKILL-SELECTION.md) · [Full catalog](#skills) · [Contribute](CONTRIBUTING.md)
 
-## What this collection provides
+## Quickstart
 
-- Test-first behavior changes with the same sequence across testing and vertical slices.
-- Scope and verification scaled to actual risk.
-- Existing user authorization carried forward without repeated routine approval stops.
-- Specific checks for tenant authorization, retry side effects, migration recovery, accessibility, and runtime behavior.
-- Self-contained skills that can be installed individually.
+Requires Git and Python 3.10 or newer. On Windows, use PowerShell; on macOS/Linux, use your shell. Replace python with python3 or py -3 if that is your installed launcher.
 
-Skills guide an agent; Markdown does not enforce a runtime gate. The included CI validates repository structure and helper behavior. It does not prove agents follow every instruction or that this collection outperforms another one. Behavioral evaluation cases are provided, but no comparative results have been published.
+Clone once:
 
-## Start small
+```sh
+git clone https://github.com/sujith011/agentic-pro-skills.git
+cd agentic-pro-skills
+```
 
-Start with understand-first, proof-first-testing, root-cause-debug, five-axis-gate, real-browser-check, and threat-surface. They apply only when relevant. Add planning, capacity, migration, and release workflows when the task calls for them; every task does not need the entire lifecycle.
+The installer prints a dry run by default. Inspect the destinations, then repeat with --apply. It refuses differing existing content and skips identical installs; it never overwrites another skill.
 
-Examples:
-- Label correction: focused edit and visual check.
-- Cross-tenant data leak: inspect ownership boundaries, add a failing abuse test, fix, and verify denial.
-- Destructive migration: compatibility, data integrity, rehearsed recovery, and target authorization.
-- Read-only review: inspect and report; do not edit, commit, or publish.
+### Claude Code
+
+```sh
+python scripts/install_skills.py --agent claude
+python scripts/install_skills.py --agent claude --apply
+```
+
+### Codex
+
+```sh
+python scripts/install_skills.py --agent codex
+python scripts/install_skills.py --agent codex --apply
+```
+
+These install six core workflows at the user scope. See [installation details](docs/INSTALLATION.md) for project scope, selected skills, all 56 skills, collisions, and platform paths.
+
+Use /root-cause-debug in Claude Code or $root-cause-debug in Codex to invoke a skill explicitly. Automatic selection depends on the agent and its configuration; inspect the session to confirm which skill loaded.
+
+## Try a task
+
+Open your own project in the agent and explicitly invoke a skill:
+
+- Claude Code: `/root-cause-debug`
+- Codex: `$root-cause-debug`
+
+Then describe a reproducible bug. For example:
+
+```text
+Reproduce this bug, identify its cause, and add a regression check that
+fails before the fix. Make the smallest supported repair. Report the
+commands run, observed results, and anything you could not verify.
+Do not commit or push.
+```
+
+Confirm which skill loaded in the session. For a ready-made practice task, follow the [duplicate-job walkthrough](examples/duplicate-job.md): copy an isolated fixture, observe repeated credits, and ask your agent to fix the retry behavior.
+
+## Choose the smallest useful workflow
+
+| Task | Start with |
+|------|------------|
+| Understand an unfamiliar codebase | [understand-first](skills/understand-first/SKILL.md) |
+| Reproduce and fix a bug | [root-cause-debug](skills/root-cause-debug/SKILL.md), [proof-first-testing](skills/proof-first-testing/SKILL.md) |
+| Review an existing change | [five-axis-gate](skills/five-axis-gate/SKILL.md) |
+| Verify a changed browser flow | [real-browser-check](skills/real-browser-check/SKILL.md) |
+| Check authorization and input boundaries | [threat-surface](skills/threat-surface/SKILL.md) |
+
+These six skills are the installer default. Install additional workflows individually; see [recommended selections](docs/SKILL-SELECTION.md). A small label correction needs a focused edit and visual check; a destructive migration needs compatibility, data-integrity, and recovery evidence. A read-only review stays read-only.
+
+## What to expect
+
+Each skill includes decision criteria, a concrete example, stop conditions, and evidence to collect. The workflows scale verification to risk and carry forward existing user authorization without repeated routine approval stops.
+
+Skills guide an agent; Markdown does not enforce a runtime gate. CI validates repository structure and helper behavior. It does not prove agents follow every instruction or that this collection outperforms another one. [Behavioral evaluation cases](evals/README.md) are provided, but no comparative results have been published.
 
 ## Skills
 
@@ -129,39 +176,6 @@ The 24 additions in v0.2.0 cover implementation and operational boundaries beyon
 | [`structured-output`](skills/structured-output/SKILL.md) | Consume model-generated JSON or typed responses with schema validation, semantic checks, bounded repair, and independent authorization for actions. |
 | [`mcp-tool-design`](skills/mcp-tool-design/SKILL.md) | Design or review Model Context Protocol tools with narrow schemas, explicit effects, authorization, bounded results, and tested protocol behavior. |
 
----
-
-## Install
-
-Requires Git and Python 3.10 or newer. On Windows, use PowerShell; on macOS/Linux, use your shell. Replace python with python3 or py -3 if that is your installed launcher.
-
-Clone once:
-
-```sh
-git clone https://github.com/sujith011/agentic-pro-skills.git
-cd agentic-pro-skills
-```
-
-The installer prints a dry run by default. Inspect the destinations, then repeat with --apply. It refuses differing existing content and skips identical installs; it never overwrites another skill.
-
-### Claude Code
-
-```sh
-python scripts/install_skills.py --agent claude
-python scripts/install_skills.py --agent claude --apply
-```
-
-### Codex
-
-```sh
-python scripts/install_skills.py --agent codex
-python scripts/install_skills.py --agent codex --apply
-```
-
-These install six core workflows at the user scope. See [installation details](docs/INSTALLATION.md) for project scope, selected skills, all 56 skills, collisions, and platform paths.
-
-Use /root-cause-debug in Claude Code or $root-cause-debug in Codex to invoke a skill explicitly. Automatic selection depends on the agent and its configuration; inspect the session to confirm which skill loaded.
-
 ## Validate and evaluate
 
 Run from the repository root:
@@ -176,6 +190,12 @@ The validator checks the supported portable frontmatter, directory/name consiste
 For live agent behavior, use the [evaluation protocol](evals/README.md) and isolated [fixtures](evals/fixtures/README.md). Record actual outcomes rather than assuming a green structural check establishes instruction-following.
 
 ## Contribute
+
+Tried a skill? [Share a usage report](https://github.com/sujith011/agentic-pro-skills/issues/new?template=usage-report.yml), including what helped and what failed. [Report an installation or workflow bug](https://github.com/sujith011/agentic-pro-skills/issues/new?template=bug-report.yml) or [propose a focused improvement](https://github.com/sujith011/agentic-pro-skills/issues/new?template=skill-proposal.yml).
+
+Useful first contributions include reproducing an installation issue, clarifying a confusing trigger, and adding an isolated evaluation fixture. See [contribution guidance](CONTRIBUTING.md#where-to-start).
+
+If this collection is useful to you, a star helps others discover it.
 
 Keep descriptions narrow, instructions scoped, and verification claims honest. Follow the [contribution guide](CONTRIBUTING.md). If adapting a published workflow, preserve its required attribution and license.
 

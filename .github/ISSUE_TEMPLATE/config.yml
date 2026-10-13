@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Installation and troubleshooting
+    url: https://github.com/sujith011/agentic-pro-skills/blob/main/docs/INSTALLATION.md
+    about: Check destination paths, collisions, discovery, updates, and removal before opening an issue.

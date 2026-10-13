@@ -1,0 +1,30 @@
+name: Skill improvement or proposal
+description: Describe a concrete task that an existing workflow misses.
+title: "[Proposal]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Task and failure mode
+      description: What decision needs better guidance? Give a concrete example.
+    validations:
+      required: true
+  - type: textarea
+    id: existing
+    attributes:
+      label: Existing skills considered
+      description: Which workflows overlap? Explain whether one can be improved instead of adding another.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Proposed behavior and verification
+      description: Describe expected decisions, stop conditions, and a check that would expose failure.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Sources and attribution
+      description: Link relevant primary references and note licensing if adapting another workflow. Leave blank if none.

@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- A reproducible duplicate-job walkthrough with isolated setup, agent prompts, verification steps, and explicit simulation limits.
+- Installation troubleshooting, copy-update/removal guidance, and contribution entry points.
+- Structured bug, skill proposal, and usage report forms plus a pull request template.
+
+### Changed
+- Moved installation above the skill catalog and added a task-oriented opening, starter selection table, and first-use prompt.
+- Preserved the six-skill installer default and the distinction between structural validation and live agent effectiveness.
+
 ## 0.2.0 - 2026-10-13
 
 Expanded engineering coverage: 56 self-contained skills, including 24 new workflows informed by a review of agentic-awesome-skills.

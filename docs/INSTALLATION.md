@@ -41,6 +41,8 @@ Omit --apply to preview first.
 
 ## All skills
 
+Version 0.2.0 contains 56 skills. See [recommended selections](SKILL-SELECTION.md) for domain-focused installations.
+
 ```sh
 python scripts/install_skills.py --agent codex --skills all
 python scripts/install_skills.py --agent codex --skills all --apply

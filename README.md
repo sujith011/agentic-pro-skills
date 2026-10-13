@@ -1,8 +1,8 @@
 # Expert Engineering Skills
 
-**32 engineering skills** for Claude Code, Codex, and agents that support SKILL.md.
+**56 engineering skills** for Claude Code, Codex, and agents that support SKILL.md.
 
-Version: **0.1.0** · [Release notes](CHANGELOG.md) · [MIT License](LICENSE)
+Version: **0.2.0** · [Release notes](CHANGELOG.md) · [MIT License](LICENSE)
 
 Practical workflows for defining, building, reviewing, and releasing software. Each skill includes decision criteria, a concrete example, stop conditions, and evidence to collect.
 
@@ -27,6 +27,8 @@ Examples:
 - Read-only review: inspect and report; do not edit, commit, or publish.
 
 ## Skills
+
+The 24 additions in v0.2.0 cover implementation and operational boundaries beyond the original lifecycle workflows. Browse [recommended selections](docs/SKILL-SELECTION.md) and [reference provenance](docs/SOURCES.md).
 
 ### Define
 | Skill | Purpose |
@@ -84,8 +86,48 @@ Examples:
 | [`incident-playbook`](skills/incident-playbook/SKILL.md) | Write the incident response steps before the feature ships |
 | [`skill-router`](skills/skill-router/SKILL.md) | Select the smallest relevant workflow |
 
----
 
+### Backend and data
+| Skill | Purpose |
+|-------|---------|
+| [`system-design`](skills/system-design/SKILL.md) | Compare service and storage boundaries for a new system or a significant architecture change using concrete workload and failure constraints. |
+| [`api-implementation`](skills/api-implementation/SKILL.md) | Implement an HTTP endpoint from an agreed contract, including authorization, pagination, concurrency, and safe retry behavior. |
+| [`event-contracts`](skills/event-contracts/SKILL.md) | Design or change durable event producers and consumers with compatible schemas, delivery semantics, and replay behavior. |
+| [`authorization-design`](skills/authorization-design/SKILL.md) | Design and verify server-side access rules for roles, tenants, resource ownership, and sensitive actions. |
+| [`database-modeling`](skills/database-modeling/SKILL.md) | Design relational entities, constraints, and transaction boundaries for new persisted behavior while preserving existing data semantics. |
+| [`query-optimization`](skills/query-optimization/SKILL.md) | Diagnose a slow database query using workload evidence and execution plans, then verify a bounded change without altering result semantics. |
+| [`cache-correctness`](skills/cache-correctness/SKILL.md) | Add or repair caching with explicit key scope, staleness bounds, invalidation races, and safe failure behavior. |
+| [`background-jobs`](skills/background-jobs/SKILL.md) | Implement durable asynchronous work with confirmed enqueue, bounded retries, idempotent effects, and recoverable worker failure. |
+| [`file-upload-safety`](skills/file-upload-safety/SKILL.md) | Implement uploads and downloads with authorized object ownership, bounded resource use, content inspection, and safe serving behavior. |
+| [`python-service-design`](skills/python-service-design/SKILL.md) | Implement or review Python HTTP service boundaries, request-scoped resources, async execution, and durable work using the installed framework. |
+
+### Frontend and mobile
+| Skill | Purpose |
+|-------|---------|
+| [`frontend-state`](skills/frontend-state/SKILL.md) | Design or fix client, URL, and server state ownership, including request races, optimistic updates, and session changes. |
+| [`react-performance`](skills/react-performance/SKILL.md) | Investigate measured React or Next.js interaction and loading bottlenecks while preserving rendering, accessibility, and data isolation. |
+| [`typescript-boundaries`](skills/typescript-boundaries/SKILL.md) | Strengthen TypeScript input and module boundaries with runtime validation, explicit domain states, and verified build/runtime resolution. |
+| [`mobile-runtime-check`](skills/mobile-runtime-check/SKILL.md) | Verify a changed mobile journey on identified devices or emulators, including permissions, lifecycle, offline behavior, and platform-specific limits. |
+
+### Quality and delivery
+| Skill | Purpose |
+|-------|---------|
+| [`e2e-journeys`](skills/e2e-journeys/SKILL.md) | Test a complete user journey through a real application boundary using stable selectors, isolated state, and observable final outcomes. |
+| [`test-data-isolation`](skills/test-data-isolation/SKILL.md) | Prepare integration or end-to-end test data with explicit environment safeguards, per-run ownership, parallel isolation, and bounded cleanup. |
+| [`ci-pipeline`](skills/ci-pipeline/SKILL.md) | Create or repair repository CI with deterministic installs, meaningful failure propagation, safe trust boundaries, and verified required checks. |
+| [`container-delivery`](skills/container-delivery/SKILL.md) | Build and verify a deployable container with a bounded build context, runtime dependencies, graceful shutdown, and controlled secrets. |
+| [`infrastructure-review`](skills/infrastructure-review/SKILL.md) | Review Terraform or OpenTofu changes against the intended environment, state, plan, replacement risk, and authorized apply scope. |
+| [`dependency-upgrade`](skills/dependency-upgrade/SKILL.md) | Upgrade a dependency or framework through verified compatibility, migration guidance, reproducible installs, and relevant runtime checks. |
+
+### AI and tools
+| Skill | Purpose |
+|-------|---------|
+| [`llm-evaluation`](skills/llm-evaluation/SKILL.md) | Evaluate a model, prompt, retrieval, or agent-tool change against a fixed baseline with task-specific scoring, held-out cases, and failure evidence. |
+| [`rag-quality`](skills/rag-quality/SKILL.md) | Improve retrieval-augmented answers by evaluating ingestion, authorized retrieval, evidence support, freshness, and abstention separately. |
+| [`structured-output`](skills/structured-output/SKILL.md) | Consume model-generated JSON or typed responses with schema validation, semantic checks, bounded repair, and independent authorization for actions. |
+| [`mcp-tool-design`](skills/mcp-tool-design/SKILL.md) | Design or review Model Context Protocol tools with narrow schemas, explicit effects, authorization, bounded results, and tested protocol behavior. |
+
+---
 
 ## Install
 
@@ -114,7 +156,7 @@ python scripts/install_skills.py --agent codex
 python scripts/install_skills.py --agent codex --apply
 ```
 
-These install six core workflows at the user scope. See [installation details](docs/INSTALLATION.md) for project scope, selected skills, all 32 skills, collisions, and platform paths.
+These install six core workflows at the user scope. See [installation details](docs/INSTALLATION.md) for project scope, selected skills, all 56 skills, collisions, and platform paths.
 
 Use /root-cause-debug in Claude Code or $root-cause-debug in Codex to invoke a skill explicitly. Automatic selection depends on the agent and its configuration; inspect the session to confirm which skill loaded.
 

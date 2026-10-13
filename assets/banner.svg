@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic Pro Skills</title>
+  <desc id="desc">Engineering workflows for Claude Code and Codex. Define, plan, build, verify, review, ship.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#101c35"/><stop offset="1" stop-color="#172c45"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#b4d5ed" stroke-opacity=".055"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="400" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="400" rx="24" fill="url(#grid)"/>
+  <path d="M0 378H1280" stroke="#64e4bc" stroke-width="3"/>
+  <g font-family="Segoe UI, sans-serif">
+    <rect x="56" y="42" width="240" height="30" rx="15" fill="#64e4bc"/>
+    <text x="176" y="62" text-anchor="middle" fill="#102737" font-size="12" font-weight="700" letter-spacing="2">YOUR ENGINEERING TOOLKIT</text>
+    <text x="56" y="147" fill="#f4f8fc" font-size="62" font-weight="750" letter-spacing="-2">Agentic Pro Skills</text>
+    <text x="59" y="193" fill="#c1d2e3" font-size="24">Better workflows. Clearer evidence.</text>
+    <text x="59" y="231" fill="#c1d2e3" font-size="19">For Claude Code &amp; Codex</text>
+    <g font-size="14" font-weight="700" text-anchor="middle">
+      <rect x="56" y="282" width="112" height="42" rx="12" fill="#73d8f2"/><text x="112" y="308" fill="#102737">DEFINE</text>
+      <rect x="178" y="282" width="112" height="42" rx="12" fill="#b6a2f6"/><text x="234" y="308" fill="#102737">PLAN</text>
+      <rect x="300" y="282" width="112" height="42" rx="12" fill="#8db8ff"/><text x="356" y="308" fill="#102737">BUILD</text>
+      <rect x="422" y="282" width="112" height="42" rx="12" fill="#64e4bc"/><text x="478" y="308" fill="#102737">VERIFY</text>
+      <rect x="544" y="282" width="112" height="42" rx="12" fill="#ffd17d"/><text x="600" y="308" fill="#102737">REVIEW</text>
+      <rect x="666" y="282" width="112" height="42" rx="12" fill="#ff9c98"/><text x="722" y="308" fill="#102737">SHIP</text>
+    </g>
+  </g>
+  <g transform="translate(902 62)">
+    <rect x="26" y="0" width="226" height="226" rx="42" fill="#b6a2f6" transform="rotate(12 139 113)"/>
+    <rect x="0" y="24" width="226" height="226" rx="42" fill="#64e4bc" transform="rotate(-8 113 137)"/>
+    <rect x="13" y="13" width="226" height="226" rx="36" fill="#182c43" stroke="#93eed2" stroke-width="2"/>
+    <path d="M85 82L48 122L85 162M167 82L204 122L167 162" fill="none" stroke="#64e4bc" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M145 73L108 174" stroke="#ffd17d" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="223" cy="218" r="29" fill="#ff9c98"/>
+    <path d="M211 218L220 227L236 210" fill="none" stroke="#182c43" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

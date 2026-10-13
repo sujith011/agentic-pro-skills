@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Visual refresh
+- Added an original SVG banner, a color-coded lifecycle graphic, live repository badges, and visual catalog markers.
+- Kept the quickstart, heading anchors, and full skill catalog accessible.
+
 ### Added
 - A reproducible duplicate-job walkthrough with isolated setup, agent prompts, verification steps, and explicit simulation limits.
 - Installation troubleshooting, copy-update/removal guidance, and contribution entry points.

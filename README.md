@@ -5,8 +5,6 @@
 [![Validation](https://img.shields.io/github/actions/workflow/status/sujith011/agentic-pro-skills/validate.yml?branch=main&style=flat-square&label=checks&labelColor=172c45&color=238467)](https://github.com/sujith011/agentic-pro-skills/actions/workflows/validate.yml)
 [![Latest release](https://img.shields.io/github/v/release/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=456eaf)](https://github.com/sujith011/agentic-pro-skills/releases)
 [![MIT license](https://img.shields.io/github/license/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=967020)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/sujith011/agentic-pro-skills?style=flat-square&labelColor=172c45&color=ad5349)](https://github.com/sujith011/agentic-pro-skills/stargazers)
-
 
 Engineering workflows for Claude Code and Codex: reproduce bugs, test fixes, and show verification evidence.
 

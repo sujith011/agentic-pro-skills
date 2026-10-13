@@ -1,4 +1,6 @@
-# Expert Engineering Skills
+# Agentic Pro Skills
+
+Professional engineering workflows for AI coding agents.
 
 **56 engineering skills** for Claude Code, Codex, and agents that support SKILL.md.
 
@@ -136,8 +138,8 @@ Requires Git and Python 3.10 or newer. On Windows, use PowerShell; on macOS/Linu
 Clone once:
 
 ```sh
-git clone https://github.com/sujith011/expert-engineering-skills.git
-cd expert-engineering-skills
+git clone https://github.com/sujith011/agentic-pro-skills.git
+cd agentic-pro-skills
 ```
 
 The installer prints a dry run by default. Inspect the destinations, then repeat with --apply. It refuses differing existing content and skips identical installs; it never overwrites another skill.

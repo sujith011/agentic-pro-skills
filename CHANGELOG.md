@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Debugging and test evidence
+- Strengthened root-cause-debug and proof-first-testing for already-green tests, setup failures, accurate test chronology, controlled race reproduction, and unavailable runtime checks.
+- Added two behavioral evaluation scenarios and a recorded scripted fixture probe; no live-agent comparative results are claimed.
+
 ### Community and discovery
 - Added a README showcase entry point and evidence-based usage report format.
 - Added a short demo recording plan, workflow-specific post drafts, and owner instructions for topics, documentation homepage, and Discussions.

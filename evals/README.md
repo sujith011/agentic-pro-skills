@@ -2,7 +2,9 @@
 
 These cases test observable agent decisions. They are a starting suite, not published evidence of superiority. No live agent results are included in this release.
 
-The suite contains 18 scenarios. The v0.2.0 additions address job redelivery, semantic output validation, cache isolation, frontend races, retrieval access/freshness, infrastructure scope, upload handling, and MCP mutation retries.
+The suite contains 20 scenarios. Cases include job redelivery, semantic output validation, cache isolation, frontend races, retrieval access/freshness, infrastructure scope, upload handling, and MCP mutation retries. Two debugging cases check whether an agent distinguishes a passing happy path from a missing regression and a setup error from a product failure.
+
+The [debugging fixture probe](reports/2026-10-14-debugging-probe.md) records a scripted red/green reference repair and setup-error checks. It establishes that the fixture exposes the relevant distinctions; it does not evaluate skill loading, autonomous agent behavior, or comparative performance. The task author saw the expected checks, so this is not a blind run.
 
 ## Run protocol
 

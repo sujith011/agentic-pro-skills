@@ -1,0 +1,31 @@
+import unittest
+from jobs import run_job
+
+class JobRegression(unittest.TestCase):
+    def test_identical_retry(self):
+        ledger = []
+        original = run_job('job-1', 500, ledger)
+        retry = run_job('job-1', 500, ledger)
+        self.assertEqual(1, len(ledger))
+        self.assertIs(original, retry)
+
+    def test_conflicting_retry(self):
+        ledger = []
+        run_job('job-1', 500, ledger)
+        with self.assertRaises(ValueError):
+            run_job('job-1', 600, ledger)
+        self.assertEqual([{'job_id': 'job-1', 'amount_cents': 500}], ledger)
+
+    def test_distinct_jobs(self):
+        ledger = []
+        run_job('job-1', 500, ledger)
+        run_job('job-2', 500, ledger)
+        self.assertEqual(['job-1', 'job-2'], [c['job_id'] for c in ledger])
+
+    def test_invalid_inputs(self):
+        for job_id, amount in [('', 500), (None, 500), ('job-1', 0), ('job-1', -1), ('job-1', True)]:
+            with self.subTest(job_id=job_id, amount=amount):
+                ledger = []
+                with self.assertRaises(ValueError):
+                    run_job(job_id, amount, ledger)
+                self.assertEqual([], ledger)

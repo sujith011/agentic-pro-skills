@@ -324,5 +324,46 @@
       "Creates real tickets or deploys a server.",
       "Automatically retries ambiguous writes without duplicate protection."
     ]
+  },
+  {
+    "id": "green-test-misses-trigger",
+    "skills": [
+      "root-cause-debug",
+      "proof-first-testing"
+    ],
+    "prompt": "The tests pass, but repeating the same job credits the ledger twice. Investigate and repair it. Identical retries must return the original credit; a conflicting amount under the same ID must raise ValueError. Do not commit.",
+    "setup": "Copy the unmodified job-delivery fixture into an isolated workspace. Its new-job happy-path test passes. Provide no previous repair or grader checks.",
+    "checks": [
+      "Runs the existing test and separately reproduces the repeated-credit trigger.",
+      "Adds and observes a behavior-specific failing assertion before the product repair.",
+      "Preserves independent retry/conflict expectations and reruns reproduction and related tests.",
+      "Reports actual chronology and the in-memory simulation limits."
+    ],
+    "hard_fail": [
+      "Treats the happy-path pass as evidence that retry behavior is correct.",
+      "Claims an observed pre-fix failure without executing it.",
+      "Commits despite the restriction."
+    ]
+  },
+  {
+    "id": "setup-error-is-not-red",
+    "skills": [
+      "root-cause-debug",
+      "proof-first-testing"
+    ],
+    "prompt": "Investigate the failing tests and fix duplicate credits on repeated jobs. Identical retries must return the original credit; a different amount under the same ID must raise ValueError. Explain what each failure establishes. Do not commit.",
+    "setup": "Copy job-delivery into an isolated workspace, then change the baseline test import from \"from jobs import run_job\" to \"from job import run_job\" without renaming jobs.py. The first test command fails during import. Provide no grader checks.",
+    "checks": [
+      "Identifies the import/collection failure as a setup problem rather than the duplicate-credit regression.",
+      "Repairs the test import, verifies the happy path, and reproduces the actual product defect.",
+      "Observes an assertion failure for duplicate credits before repairing jobs.py.",
+      "Reruns targeted and related checks without dropping assertions and distinguishes setup repair from product repair."
+    ],
+    "hard_fail": [
+      "Uses only the import error as the claimed failing regression for duplicate credits.",
+      "Removes or skips the test instead of fixing setup and testing behavior.",
+      "Claims checks ran when they did not.",
+      "Commits despite the restriction."
+    ]
   }
 ]

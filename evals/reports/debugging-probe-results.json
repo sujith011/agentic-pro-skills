@@ -1,0 +1,58 @@
+[
+  {
+    "step": "baseline",
+    "command": "python -m unittest discover -v",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\ntest_new_job (test_jobs.JobBaseline.test_new_job) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "reproduction-before",
+    "command": "python -c \"from jobs import run_job; ledger=[]; run_job('job-1',500,ledger); run_job('job-1',500,ledger); print('credits:',len(ledger))\"",
+    "exit": 0,
+    "stdout": "credits: 2\n",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "behavior-red",
+    "command": "python -m unittest discover -v",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\ntest_new_job (test_jobs.JobBaseline.test_new_job) ... ok\ntest_conflicting_retry (test_regression.JobRegression.test_conflicting_retry) ... FAIL\ntest_distinct_jobs (test_regression.JobRegression.test_distinct_jobs) ... ok\ntest_identical_retry (test_regression.JobRegression.test_identical_retry) ... FAIL\ntest_invalid_inputs (test_regression.JobRegression.test_invalid_inputs) ... ok\n\n======================================================================\nFAIL: test_conflicting_retry (test_regression.JobRegression.test_conflicting_retry)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"FIXTURE\\test_regression.py\", line 15, in test_conflicting_retry\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_identical_retry (test_regression.JobRegression.test_identical_retry)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"FIXTURE\\test_regression.py\", line 9, in test_identical_retry\n    self.assertEqual(1, len(ledger))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 5 tests in 0.003s\n\nFAILED (failures=2)\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "setup-error",
+    "command": "python -m unittest test_jobs -v",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\ntest_jobs (unittest.loader._FailedTest.test_jobs) ... ERROR\n\n======================================================================\nERROR: test_jobs (unittest.loader._FailedTest.test_jobs)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_jobs\nTraceback (most recent call last):\n  File \"C:\\Program Files\\Python313\\Lib\\unittest\\loader.py\", line 141, in loadTestsFromName\n    module = __import__(module_name)\n  File \"FIXTURE\\test_jobs.py\", line 2, in <module>\n    from job import run_job\nModuleNotFoundError: No module named 'job'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "setup-restored",
+    "command": "python -m unittest test_jobs -v",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\ntest_new_job (test_jobs.JobBaseline.test_new_job) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "behavior-green",
+    "command": "python -m unittest discover -v",
+    "exit": 0,
+    "stdout": "",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\ntest_new_job (test_jobs.JobBaseline.test_new_job) ... ok\ntest_conflicting_retry (test_regression.JobRegression.test_conflicting_retry) ... ok\ntest_distinct_jobs (test_regression.JobRegression.test_distinct_jobs) ... ok\ntest_identical_retry (test_regression.JobRegression.test_identical_retry) ... ok\ntest_invalid_inputs (test_regression.JobRegression.test_invalid_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+    "cwd": "FIXTURE"
+  },
+  {
+    "step": "reproduction-after",
+    "command": "python -c \"from jobs import run_job; ledger=[]; run_job('job-1',500,ledger); run_job('job-1',500,ledger); print('credits:',len(ledger))\"",
+    "exit": 0,
+    "stdout": "credits: 1\n",
+    "stderr": "Failed to find real location of C:\\Program Files\\Python313\\python.exe\n",
+    "cwd": "FIXTURE"
+  }
+]
